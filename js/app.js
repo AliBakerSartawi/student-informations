@@ -15,8 +15,9 @@ function getName(email) {
   return extractedName;
 }
 
-//id counter 
+//id counter
 let id = 0;
+let newTotal = 0;
 
 
 //constructor object
@@ -36,7 +37,10 @@ Student.prototype.render = function(){
   // console.log('new1', student);
   // const newStudent = new Student(student[1], student[2], student[4]);
   // console.log('new2', newStudent);
-  console.log(this);
+  console.log('this', this);
+
+  const studentValues = Object.values(this);
+  console.log('student values', studentValues)
   const tableEl = document.getElementById('table');
   const rowEl = document.createElement('tr');
   tableEl.appendChild(rowEl);
@@ -46,11 +50,18 @@ Student.prototype.render = function(){
   rowEl.appendChild(tdEl);
   tdEl.textContent = id;
   
-  for (let i = 0; i < this.length; i++) {
+  for (let i = 0; i < studentValues.length; i++) {
     const tdEl = document.createElement('td');
     rowEl.appendChild(tdEl);
-    tdEl.textContent = this[i].value;
+    tdEl.textContent = studentValues[i];
   }
+
+  console.log('tuition', parseInt(studentValues[4]));
+  newTotal = newTotal + parseInt(studentValues[4]);
+  console.log('newtotal', newTotal);
+  const totalEl = document.getElementById('total');
+  totalEl.textContent = '';
+  totalEl.textContent = newTotal;
 };
 
 
@@ -72,6 +83,22 @@ function handleSubmit(event) {
   form.reset();
 }
 
+// //prevent local storage reset from previous pages
+// function getLocalStorage() {
+//   localStorage.removeItem('randid');
+//   if(localStorage.length > 0){
+//     const retrieve = JSON.parse(localStorage.getItem('students'));
+//     console.log('retrieve', retrieve);
+    
+//     for (let i = 0; i < retrieve.length; i++) {
+//       const student = Object.values(retrieve[i]);
+//       console.log('new1', student);
+//       const newStudent = new Student(student[1], student[2], student[4]);
+//       console.log('new2', newStudent);
+//     }
+// }
+
+
 //render on page reload
 function reloadRender () {
   localStorage.removeItem('randid');
@@ -81,9 +108,9 @@ function reloadRender () {
     
     for (let i = 0; i < retrieve.length; i++) {
       const student = Object.values(retrieve[i]);
-      // console.log('new1', student);
-      // const newStudent = new Student(student[1], student[2], student[4]);
-      // console.log('new2', newStudent);
+      console.log('new1', student);
+      const newStudent = new Student(student[1], student[2], student[4]);
+      console.log('new2', newStudent);
       
       const tableEl = document.getElementById('table');
       const rowEl = document.createElement('tr');
@@ -99,6 +126,13 @@ function reloadRender () {
         rowEl.appendChild(tdEl);
         tdEl.textContent = student[i];
       }
+
+      console.log('tuition', parseInt(student[4]));
+      newTotal = newTotal + parseInt(student[4]);
+      console.log('newtotal', newTotal);
+      const totalEl = document.getElementById('total');
+      totalEl.textContent = '';
+      totalEl.textContent = newTotal;
     }
   }
 }
