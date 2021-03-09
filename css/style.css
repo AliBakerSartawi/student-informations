@@ -1,0 +1,49 @@
+:root {
+  --grey: rgba(96, 96, 96,0.6);
+  --light: #eee;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: x-large;
+  color: var(--light);
+  background-image: url(../img/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  text-align: center;
+  padding: 30px;
+  background-color: var(--grey);
+}
+
+header a {
+  color: var(--light);
+  float: right;
+  padding-right: 30px;
+}
+
+#form-section {
+  background-color: var(--grey);
+  padding: 30px;
+  float: left;
+  margin: 50px 0 0 50px;
+}
+
+#table-section {
+  background-color: var(--grey);
+  padding: 30px;
+  float: left;
+  margin: 50px 0 0 50px;
+}
+
+td {
+  border: solid 2px var(--light);
+  padding: 10px;
+}
+
+#total-section {
+  text-align: center;
+  padding-top: 10px;
+}
