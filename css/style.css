@@ -16,6 +16,8 @@ header {
   text-align: center;
   padding: 30px;
   background-color: var(--grey);
+  border-bottom: 1px solid var(--light);
+  position: relative;
 }
 
 header a {
@@ -31,11 +33,18 @@ header a {
   margin: 50px 0 0 50px;
 }
 
+#form input {
+  float: right;
+}
+
 #table-section {
   background-color: var(--grey);
   padding: 30px;
   float: left;
   margin: 50px 0 0 50px;
+}
+
+#table-header {
 }
 
 td {
